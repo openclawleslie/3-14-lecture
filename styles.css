@@ -1042,11 +1042,13 @@ section {
 
 .proof-logo {
   display: block;
-  margin: 0 auto 1.2rem;
-  height: 52px;
+  margin: 0 auto 1.4rem;
+  height: 64px;
   width: auto;
-  filter: brightness(1.2);
-  opacity: 0.9;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  object-fit: contain;
 }
 
 .proof-header h2 {
