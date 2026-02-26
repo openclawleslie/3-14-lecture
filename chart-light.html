@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>寫作，不只是寫作業｜課堂對照</title>
+  <title>寫作，不只是寫作業｜課堂對照（淺色版）</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* --- Reset --- */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #1A1A2E;
-      --bg-left: rgba(255, 255, 255, 0.035);
-      --bg-right: rgba(201, 169, 110, 0.055);
-      --border-subtle: rgba(255, 255, 255, 0.07);
-      --border-gold: rgba(201, 169, 110, 0.22);
-      --border-gray: rgba(142, 142, 160, 0.12);
-      --gold: #C9A96E;
-      --gold-light: #DBBF8A;
-      --gray: #8E8EA0;
-      --text-white: #F0EDE8;
-      --text-muted: #6E6E82;
+      --bg: #FFFFFF;
+      --bg-left: rgba(0, 0, 0, 0.022);
+      --bg-right: rgba(180, 148, 78, 0.07);
+      --border-subtle: rgba(0, 0, 0, 0.07);
+      --border-gold: rgba(180, 140, 60, 0.25);
+      --border-gray: rgba(0, 0, 0, 0.08);
+      --gold: #B8944E;
+      --gold-light: #9E7D3A;
+      --gray: #7A7A8E;
+      --text-dark: #2A2A3C;
+      --text-muted: #8E8E9E;
       --font-serif: 'Noto Serif TC', Georgia, 'Times New Roman', serif;
       --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     }
 
     body {
       font-family: var(--font-sans);
-      background: #111120;
-      color: var(--text-white);
+      background: #F5F3EE;
+      color: var(--text-dark);
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -47,9 +47,10 @@
       display: grid;
       grid-template-columns: 340px 1fr;
       position: relative;
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.06), 0 1px 8px rgba(0, 0, 0, 0.04);
     }
 
-    /* Subtle ambient glow */
+    /* Subtle ambient warm glow */
     .chart-container::before {
       content: '';
       position: absolute;
@@ -57,7 +58,7 @@
       left: 280px;
       width: 500px;
       height: 400px;
-      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.06) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -70,7 +71,8 @@
       padding: 3.5rem 2.8rem;
       position: relative;
       z-index: 1;
-      border-right: 1px solid rgba(201, 169, 110, 0.1);
+      border-right: 1px solid rgba(180, 140, 60, 0.12);
+      background: rgba(250, 248, 244, 0.6);
     }
 
     /* Decorative vertical gold line */
@@ -82,14 +84,14 @@
       width: 2px;
       height: 70%;
       background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-      opacity: 0.3;
+      opacity: 0.25;
     }
 
     .chart-title {
       font-family: var(--font-serif);
       font-size: 2.6rem;
       font-weight: 900;
-      color: var(--text-white);
+      color: var(--text-dark);
       letter-spacing: 0.08em;
       line-height: 1.35;
       margin-bottom: 0.8rem;
@@ -111,7 +113,7 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       color: var(--gold);
-      opacity: 0.7;
+      opacity: 0.8;
       margin-bottom: 1.8rem;
       text-transform: uppercase;
     }
@@ -135,7 +137,7 @@
       width: 40px;
       height: 1px;
       background: var(--gold);
-      opacity: 0.5;
+      opacity: 0.45;
     }
 
     .gold-diamond {
@@ -143,7 +145,7 @@
       height: 6px;
       background: var(--gold);
       transform: rotate(45deg);
-      opacity: 0.6;
+      opacity: 0.5;
     }
 
     /* CTA in left panel */
@@ -180,8 +182,7 @@
       width: 72px;
       height: 72px;
       border-radius: 6px;
-      filter: invert(1);
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
     .qr-label {
@@ -192,7 +193,7 @@
     }
 
     .qr-label strong {
-      color: var(--gold-light);
+      color: var(--gold);
       font-weight: 600;
       display: block;
       font-size: 0.72rem;
@@ -229,13 +230,13 @@
     }
 
     .col-header.typical {
-      background: rgba(142, 142, 160, 0.08);
+      background: rgba(0, 0, 0, 0.03);
       color: var(--gray);
       border: 1px solid var(--border-gray);
     }
 
     .col-header.ours {
-      background: rgba(201, 169, 110, 0.08);
+      background: rgba(180, 148, 78, 0.08);
       color: var(--gold);
       border: 1px solid var(--border-gold);
     }
@@ -279,7 +280,7 @@
     .cell.ours {
       background: var(--bg-right);
       border: 1px solid var(--border-gold);
-      color: var(--text-white);
+      color: var(--text-dark);
       font-weight: 600;
     }
 
@@ -298,12 +299,12 @@
     }
 
     .cell.typical .row-num {
-      background: rgba(142, 142, 160, 0.15);
+      background: rgba(0, 0, 0, 0.06);
       color: var(--gray);
     }
 
     .cell.ours .row-num {
-      background: rgba(201, 169, 110, 0.2);
+      background: rgba(180, 148, 78, 0.18);
       color: var(--gold);
     }
 
@@ -326,7 +327,7 @@
       .chart-left {
         padding: 2rem;
         border-right: none;
-        border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+        border-bottom: 1px solid rgba(180, 140, 60, 0.12);
       }
       .chart-left::after { display: none; }
       .chart-cta { margin-top: 1rem; }
