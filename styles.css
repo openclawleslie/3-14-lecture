@@ -4,10 +4,10 @@
 
 /* --- Custom Properties --- */
 :root {
-  --bg-dark: #22223A;
-  --bg-card: #2C2C4E;
-  --bg-section-alt: #1E1E38;
-  --bg-hero: #1A1A32;
+  --bg-dark: #2A2A48;
+  --bg-card: #353558;
+  --bg-section-alt: #262644;
+  --bg-hero: #22223C;
   --text-primary: #F5F2EC;
   --text-secondary: #CFC7BB;
   --text-light: #A8A097;
@@ -379,7 +379,7 @@ section {
   position: relative;
   padding: 0;
   overflow: hidden;
-  background: #14142A;
+  background: #1C1C36;
 }
 
 /* Portrait zone — capped width so framing stays consistent across all screens */
@@ -406,8 +406,8 @@ section {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to bottom, rgba(20,20,42,0.1) 0%, rgba(20,20,42,0) 20%, rgba(20,20,42,0.4) 80%, #14142A 100%),
-    linear-gradient(to right, rgba(20,20,42,0.5) 0%, transparent 20%, transparent 80%, rgba(20,20,42,0.5) 100%);
+    linear-gradient(to bottom, rgba(28,28,54,0.1) 0%, rgba(28,28,54,0) 20%, rgba(28,28,54,0.4) 80%, #1C1C36 100%),
+    linear-gradient(to right, rgba(28,28,54,0.5) 0%, transparent 20%, transparent 80%, rgba(28,28,54,0.5) 100%);
   pointer-events: none;
 }
 
@@ -419,7 +419,7 @@ section {
   left: 0;
   right: 0;
   height: 780px;
-  background: linear-gradient(to right, #14142A 0%, transparent 15%, transparent 85%, #14142A 100%);
+  background: linear-gradient(to right, #1C1C36 0%, transparent 15%, transparent 85%, #1C1C36 100%);
   z-index: 1;
   pointer-events: none;
 }
