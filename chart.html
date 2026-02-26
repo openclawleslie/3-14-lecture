@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>寫作，不只是寫作業｜課堂對照</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- Reset --- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #1A1A2E;
+      --bg-card: rgba(255, 255, 255, 0.05);
+      --bg-card-gold: rgba(201, 169, 110, 0.06);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-gold: rgba(201, 169, 110, 0.2);
+      --border-gray: rgba(142, 142, 160, 0.15);
+      --gold: #C9A96E;
+      --gold-light: #DBBF8A;
+      --gray: #8E8EA0;
+      --gray-light: #A0A0B2;
+      --text-white: #F0EDE8;
+      --text-muted: #7A7A8E;
+      --font-serif: 'Noto Serif TC', Georgia, 'Times New Roman', serif;
+      --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text-white);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      line-height: 1.6;
+    }
+
+    /* --- Container: 4:5 ratio --- */
+    .chart-container {
+      width: 100%;
+      max-width: 600px;
+      aspect-ratio: 4 / 5;
+      background: var(--bg);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem 2rem 2rem;
+      position: relative;
+    }
+
+    /* Subtle top glow */
+    .chart-container::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 200px;
+      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* --- Header --- */
+    .chart-header {
+      text-align: center;
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+
+    .chart-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-weight: 700;
+      color: var(--text-white);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.4rem;
+    }
+
+    .chart-subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      font-weight: 400;
+    }
+
+    /* Gold divider */
+    .gold-divider {
+      width: 60px;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.2rem auto 0;
+    }
+
+    /* --- Column Headers --- */
+    .col-headers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .col-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.55rem 0.5rem;
+      border-radius: 8px;
+      font-size: clamp(0.72rem, 2vw, 0.82rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .col-header.typical {
+      background: rgba(142, 142, 160, 0.1);
+      color: var(--gray);
+      border: 1px solid var(--border-gray);
+    }
+
+    .col-header.ours {
+      background: rgba(201, 169, 110, 0.1);
+      color: var(--gold);
+      border: 1px solid var(--border-gold);
+    }
+
+    .col-icon {
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* --- Comparison Rows --- */
+    .chart-rows {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .chart-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      flex: 1;
+    }
+
+    .cell {
+      padding: 0.65rem 0.75rem;
+      border-radius: 8px;
+      font-size: clamp(0.68rem, 1.8vw, 0.8rem);
+      line-height: 1.55;
+      display: flex;
+      align-items: center;
+      transition: transform 0.2s ease;
+    }
+
+    .cell.typical {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+    }
+
+    .cell.ours {
+      background: var(--bg-card-gold);
+      border: 1px solid var(--border-gold);
+      color: var(--text-white);
+      font-weight: 600;
+    }
+
+    /* --- CTA --- */
+    .chart-cta {
+      text-align: center;
+      margin-top: 1.4rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(201, 169, 110, 0.12);
+    }
+
+    .cta-text {
+      font-size: clamp(0.75rem, 2vw, 0.88rem);
+      color: var(--gold-light);
+      letter-spacing: 0.04em;
+      font-weight: 600;
+    }
+
+    .cta-sub {
+      font-size: clamp(0.62rem, 1.5vw, 0.72rem);
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 420px) {
+      .chart-container {
+        padding: 1.8rem 1.2rem 1.5rem;
+        aspect-ratio: auto;
+        min-height: 0;
+      }
+
+      .cell {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.7rem;
+      }
+
+      .chart-header {
+        margin-bottom: 1.2rem;
+      }
+
+      .chart-rows {
+        gap: 0.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="chart-container">
+
+  <!-- Header -->
+  <div class="chart-header">
+    <h1 class="chart-title">寫作，不只是寫作業</h1>
+    <p class="chart-subtitle">我們的課堂在做什麼？</p>
+    <div class="gold-divider" aria-hidden="true"></div>
+  </div>
+
+  <!-- Column Headers -->
+  <div class="col-headers">
+    <div class="col-header typical">
+      <span class="col-icon">✕</span>
+      一般英文寫作課
+    </div>
+    <div class="col-header ours">
+      <span class="col-icon">✦</span>
+      我們的課堂
+    </div>
+  </div>
+
+  <!-- Comparison Rows -->
+  <div class="chart-rows">
+
+    <div class="chart-row">
+      <div class="cell typical">背範文、套模板</div>
+      <div class="cell ours">讀真正的英文文章——這週讀的是哈佛校友、古根漢獎學金得主的作品</div>
+    </div>
+
+    <div class="chart-row">
+      <div class="cell typical">練拼字、背單字、改文法</div>
+      <div class="cell ours">練習用英文組織想法、表達觀點、說服別人</div>
+    </div>
+
+    <div class="chart-row">
+      <div class="cell typical">寫完交出去就結束了</div>
+      <div class="cell ours">寫完之後上台分享，老師一對一追問，把想法說得更深</div>
+    </div>
+
+    <div class="chart-row">
+      <div class="cell typical">題目是「我的暑假」「我的寵物」</div>
+      <div class="cell ours">題目是「你寒假最挫折的事是什麼？為什麼？」</div>
+    </div>
+
+    <div class="chart-row">
+      <div class="cell typical">怕寫錯所以不敢寫</div>
+      <div class="cell ours">重點不是對錯，是你有沒有想法</div>
+    </div>
+
+    <div class="chart-row">
+      <div class="cell typical">寫作是一門「科目」</div>
+      <div class="cell ours">寫作是認識自己的過程</div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="chart-cta">
+    <p class="cta-text">歡迎預約試聽，讓孩子體驗不一樣的英文課</p>
+    <p class="cta-sub">12–18 歲 · 小班制 · 台北</p>
+  </div>
+
+</div>
+
+</body>
+</html>
