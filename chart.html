@@ -4,215 +4,286 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>寫作，不只是寫作業｜課堂對照</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* --- Reset --- */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg: #1A1A2E;
-      --bg-card: rgba(255, 255, 255, 0.05);
-      --bg-card-gold: rgba(201, 169, 110, 0.06);
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-gold: rgba(201, 169, 110, 0.2);
-      --border-gray: rgba(142, 142, 160, 0.15);
+      --bg-left: rgba(255, 255, 255, 0.035);
+      --bg-right: rgba(201, 169, 110, 0.055);
+      --border-subtle: rgba(255, 255, 255, 0.07);
+      --border-gold: rgba(201, 169, 110, 0.22);
+      --border-gray: rgba(142, 142, 160, 0.12);
       --gold: #C9A96E;
       --gold-light: #DBBF8A;
       --gray: #8E8EA0;
-      --gray-light: #A0A0B2;
       --text-white: #F0EDE8;
-      --text-muted: #7A7A8E;
+      --text-muted: #6E6E82;
       --font-serif: 'Noto Serif TC', Georgia, 'Times New Roman', serif;
       --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     }
 
     body {
       font-family: var(--font-sans);
-      background: var(--bg);
+      background: #111120;
       color: var(--text-white);
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      padding: 2rem 1rem;
+      align-items: center;
+      padding: 1.5rem;
       line-height: 1.6;
     }
 
-    /* --- Container: 4:5 ratio --- */
+    /* --- Container: 16:9 landscape (1920×1080) --- */
     .chart-container {
       width: 100%;
-      max-width: 600px;
-      aspect-ratio: 4 / 5;
+      max-width: 1920px;
+      aspect-ratio: 16 / 9;
       background: var(--bg);
-      border-radius: 12px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      padding: 2.5rem 2rem 2rem;
+      display: grid;
+      grid-template-columns: 340px 1fr;
       position: relative;
     }
 
-    /* Subtle top glow */
+    /* Subtle ambient glow */
     .chart-container::before {
       content: '';
       position: absolute;
-      top: -80px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 400px;
-      height: 200px;
-      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.08) 0%, transparent 70%);
+      top: -100px;
+      left: 280px;
+      width: 500px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.07) 0%, transparent 70%);
       pointer-events: none;
+      z-index: 0;
     }
 
-    /* --- Header --- */
-    .chart-header {
-      text-align: center;
-      margin-bottom: 1.8rem;
+    /* === LEFT PANEL — Title & CTA === */
+    .chart-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3.5rem 2.8rem;
       position: relative;
+      z-index: 1;
+      border-right: 1px solid rgba(201, 169, 110, 0.1);
+    }
+
+    /* Decorative vertical gold line */
+    .chart-left::after {
+      content: '';
+      position: absolute;
+      top: 15%;
+      right: 0;
+      width: 2px;
+      height: 70%;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      opacity: 0.3;
     }
 
     .chart-title {
       font-family: var(--font-serif);
-      font-size: clamp(1.5rem, 5vw, 2rem);
-      font-weight: 700;
+      font-size: 2.6rem;
+      font-weight: 900;
       color: var(--text-white);
-      letter-spacing: 0.06em;
-      margin-bottom: 0.4rem;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+      margin-bottom: 0.8rem;
     }
 
     .chart-subtitle {
       font-family: var(--font-serif);
-      font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+      font-size: 1.05rem;
       color: var(--gold);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       font-weight: 400;
+      margin-bottom: 2rem;
     }
 
-    /* Gold divider */
-    .gold-divider {
-      width: 60px;
-      height: 1.5px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 1.2rem auto 0;
+    /* Gold decorative element */
+    .gold-ornament {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
     }
 
-    /* --- Column Headers --- */
+    .gold-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .gold-diamond {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      opacity: 0.6;
+    }
+
+    /* CTA in left panel */
+    .chart-cta {
+      margin-top: auto;
+      padding-top: 2rem;
+    }
+
+    .cta-text {
+      font-family: var(--font-serif);
+      font-size: 0.88rem;
+      color: var(--gold-light);
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      line-height: 1.7;
+    }
+
+    .cta-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* === RIGHT PANEL — Comparison Chart === */
+    .chart-right {
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Column Headers */
     .col-headers {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.6rem;
-      margin-bottom: 0.6rem;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
     }
 
     .col-header {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.4rem;
-      padding: 0.55rem 0.5rem;
-      border-radius: 8px;
-      font-size: clamp(0.72rem, 2vw, 0.82rem);
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-family: var(--font-serif);
+      font-size: 1rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
     }
 
     .col-header.typical {
-      background: rgba(142, 142, 160, 0.1);
+      background: rgba(142, 142, 160, 0.08);
       color: var(--gray);
       border: 1px solid var(--border-gray);
     }
 
     .col-header.ours {
-      background: rgba(201, 169, 110, 0.1);
+      background: rgba(201, 169, 110, 0.08);
       color: var(--gold);
       border: 1px solid var(--border-gold);
     }
 
     .col-icon {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       line-height: 1;
     }
 
-    /* --- Comparison Rows --- */
+    /* Rows */
     .chart-rows {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 0.45rem;
+      gap: 0.6rem;
     }
 
     .chart-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.6rem;
+      gap: 1rem;
       flex: 1;
     }
 
     .cell {
-      padding: 0.65rem 0.75rem;
-      border-radius: 8px;
-      font-size: clamp(0.68rem, 1.8vw, 0.8rem);
-      line-height: 1.55;
+      padding: 0.9rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      line-height: 1.6;
       display: flex;
       align-items: center;
-      transition: transform 0.2s ease;
     }
 
     .cell.typical {
-      background: var(--bg-card);
+      background: var(--bg-left);
       border: 1px solid var(--border-subtle);
       color: var(--text-muted);
+      font-weight: 400;
     }
 
     .cell.ours {
-      background: var(--bg-card-gold);
+      background: var(--bg-right);
       border: 1px solid var(--border-gold);
       color: var(--text-white);
       font-weight: 600;
     }
 
-    /* --- CTA --- */
-    .chart-cta {
-      text-align: center;
-      margin-top: 1.4rem;
-      padding-top: 1.2rem;
-      border-top: 1px solid rgba(201, 169, 110, 0.12);
+    /* Row number accent */
+    .row-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-size: 0.68rem;
+      font-weight: 700;
+      margin-right: 0.7rem;
+      flex-shrink: 0;
     }
 
-    .cta-text {
-      font-size: clamp(0.75rem, 2vw, 0.88rem);
-      color: var(--gold-light);
-      letter-spacing: 0.04em;
-      font-weight: 600;
+    .cell.typical .row-num {
+      background: rgba(142, 142, 160, 0.15);
+      color: var(--gray);
     }
 
-    .cta-sub {
-      font-size: clamp(0.62rem, 1.5vw, 0.72rem);
-      color: var(--text-muted);
-      margin-top: 0.3rem;
+    .cell.ours .row-num {
+      background: rgba(201, 169, 110, 0.2);
+      color: var(--gold);
     }
 
-    /* --- Responsive --- */
-    @media (max-width: 420px) {
+    /* === Responsive — scale down for smaller screens === */
+    @media (max-width: 1200px) {
       .chart-container {
-        padding: 1.8rem 1.2rem 1.5rem;
+        grid-template-columns: 280px 1fr;
+      }
+      .chart-title { font-size: 2rem; }
+      .chart-left { padding: 2.5rem 2rem; }
+      .chart-right { padding: 2rem; }
+      .cell { font-size: 0.82rem; padding: 0.7rem 1rem; }
+    }
+
+    @media (max-width: 900px) {
+      .chart-container {
+        grid-template-columns: 1fr;
         aspect-ratio: auto;
-        min-height: 0;
       }
-
-      .cell {
-        padding: 0.5rem 0.6rem;
-        font-size: 0.7rem;
+      .chart-left {
+        padding: 2rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(201, 169, 110, 0.1);
       }
-
-      .chart-header {
-        margin-bottom: 1.2rem;
-      }
-
-      .chart-rows {
-        gap: 0.35rem;
-      }
+      .chart-left::after { display: none; }
+      .chart-cta { margin-top: 1rem; }
+      .chart-right { padding: 1.5rem; }
+      .cell { font-size: 0.78rem; padding: 0.6rem 0.8rem; }
+      .col-header { font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -220,64 +291,75 @@
 
 <div class="chart-container">
 
-  <!-- Header -->
-  <div class="chart-header">
-    <h1 class="chart-title">寫作，不只是寫作業</h1>
+  <!-- LEFT PANEL — Title & CTA -->
+  <div class="chart-left">
+
+    <div class="gold-ornament" aria-hidden="true">
+      <span class="gold-line"></span>
+      <span class="gold-diamond"></span>
+      <span class="gold-line"></span>
+    </div>
+
+    <h1 class="chart-title">寫作，<br>不只是<br>寫作業</h1>
     <p class="chart-subtitle">我們的課堂在做什麼？</p>
-    <div class="gold-divider" aria-hidden="true"></div>
-  </div>
 
-  <!-- Column Headers -->
-  <div class="col-headers">
-    <div class="col-header typical">
-      <span class="col-icon">✕</span>
-      一般英文寫作課
-    </div>
-    <div class="col-header ours">
-      <span class="col-icon">✦</span>
-      我們的課堂
-    </div>
-  </div>
-
-  <!-- Comparison Rows -->
-  <div class="chart-rows">
-
-    <div class="chart-row">
-      <div class="cell typical">背範文、套模板</div>
-      <div class="cell ours">讀真正的英文文章——這週讀的是哈佛校友、古根漢獎學金得主的作品</div>
-    </div>
-
-    <div class="chart-row">
-      <div class="cell typical">練拼字、背單字、改文法</div>
-      <div class="cell ours">練習用英文組織想法、表達觀點、說服別人</div>
-    </div>
-
-    <div class="chart-row">
-      <div class="cell typical">寫完交出去就結束了</div>
-      <div class="cell ours">寫完之後上台分享，老師一對一追問，把想法說得更深</div>
-    </div>
-
-    <div class="chart-row">
-      <div class="cell typical">題目是「我的暑假」「我的寵物」</div>
-      <div class="cell ours">題目是「你寒假最挫折的事是什麼？為什麼？」</div>
-    </div>
-
-    <div class="chart-row">
-      <div class="cell typical">怕寫錯所以不敢寫</div>
-      <div class="cell ours">重點不是對錯，是你有沒有想法</div>
-    </div>
-
-    <div class="chart-row">
-      <div class="cell typical">寫作是一門「科目」</div>
-      <div class="cell ours">寫作是認識自己的過程</div>
+    <div class="chart-cta">
+      <p class="cta-text">歡迎預約試聽，<br>讓孩子體驗不一樣的英文課</p>
+      <p class="cta-sub">12–18 歲 · 小班制 · 台北</p>
     </div>
 
   </div>
 
-  <!-- CTA -->
-  <div class="chart-cta">
-    <p class="cta-text">歡迎預約試聽，讓孩子體驗不一樣的英文課</p>
-    <p class="cta-sub">12–18 歲 · 小班制 · 台北</p>
+  <!-- RIGHT PANEL — Comparison Chart -->
+  <div class="chart-right">
+
+    <!-- Column Headers -->
+    <div class="col-headers">
+      <div class="col-header typical">
+        <span class="col-icon">✕</span>
+        一般英文寫作課
+      </div>
+      <div class="col-header ours">
+        <span class="col-icon">✦</span>
+        我們的課堂
+      </div>
+    </div>
+
+    <!-- Rows -->
+    <div class="chart-rows">
+
+      <div class="chart-row">
+        <div class="cell typical"><span class="row-num">1</span>背範文、套模板</div>
+        <div class="cell ours"><span class="row-num">1</span>讀真正的英文文章——這週讀的是哈佛校友、古根漢獎學金得主的作品</div>
+      </div>
+
+      <div class="chart-row">
+        <div class="cell typical"><span class="row-num">2</span>練拼字、背單字、改文法</div>
+        <div class="cell ours"><span class="row-num">2</span>練習用英文組織想法、表達觀點、說服別人</div>
+      </div>
+
+      <div class="chart-row">
+        <div class="cell typical"><span class="row-num">3</span>寫完交出去就結束了</div>
+        <div class="cell ours"><span class="row-num">3</span>寫完之後上台分享，老師一對一追問，把想法說得更深</div>
+      </div>
+
+      <div class="chart-row">
+        <div class="cell typical"><span class="row-num">4</span>題目是「我的暑假」「我的寵物」</div>
+        <div class="cell ours"><span class="row-num">4</span>題目是「你寒假最挫折的事是什麼？為什麼？」</div>
+      </div>
+
+      <div class="chart-row">
+        <div class="cell typical"><span class="row-num">5</span>怕寫錯所以不敢寫</div>
+        <div class="cell ours"><span class="row-num">5</span>重點不是對錯，是你有沒有想法</div>
+      </div>
+
+      <div class="chart-row">
+        <div class="cell typical"><span class="row-num">6</span>寫作是一門「科目」</div>
+        <div class="cell ours"><span class="row-num">6</span>寫作是認識自己的過程</div>
+      </div>
+
+    </div>
+
   </div>
 
 </div>
