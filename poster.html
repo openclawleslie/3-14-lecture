@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宗翰老師 — 獵豹科教創辦人</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #141414;
+      --photo-zone: #1E1E1E;
+      --name-text: #FFFFFF;
+      --tagline-text: #D4D4D4;
+      --credential-text: #BFBFBF;
+      --accent-red: #B91C1C;
+      --font-serif: 'Noto Serif TC', Georgia, serif;
+      --font-sans: 'Noto Sans TC', -apple-system, sans-serif;
+    }
+
+    body {
+      background: #0A0A0A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    /* Poster container — 3:4 aspect ratio like the PPTX */
+    .poster {
+      width: 100%;
+      max-width: 560px;
+      aspect-ratio: 3 / 4;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+    }
+
+    /* Photo zone — top 60% */
+    .poster-photo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 62%;
+      background: var(--photo-zone);
+      overflow: hidden;
+    }
+
+    .poster-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+    }
+
+    /* Fade from photo to dark bg */
+    .poster-photo-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
+      pointer-events: none;
+    }
+
+    /* Text content — bottom portion */
+    .poster-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0 2rem 2rem;
+      text-align: center;
+    }
+
+    /* Tagline with red lines */
+    .poster-tagline-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .poster-red-line {
+      width: 60px;
+      height: 1.5px;
+      background: var(--accent-red);
+    }
+
+    .poster-tagline {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      color: var(--tagline-text);
+      letter-spacing: 0.2em;
+      white-space: nowrap;
+    }
+
+    /* Big name */
+    .poster-name {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 900;
+      color: var(--name-text);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+    }
+
+    /* Credentials */
+    .poster-credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .poster-credentials p {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: var(--credential-text);
+      line-height: 1.6;
+      letter-spacing: 0.03em;
+    }
+
+    /* Bottom accent line */
+    .poster-bottom-line {
+      width: 80px;
+      height: 1px;
+      background: var(--accent-red);
+      margin: 0 auto;
+      opacity: 0.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      body { padding: 1rem; }
+      .poster-text { padding: 0 1.2rem 1.5rem; }
+      .poster-tagline { font-size: 0.72rem; }
+      .poster-red-line { width: 35px; }
+      .poster-credentials p { font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="poster">
+  <!-- Photo zone -->
+  <div class="poster-photo">
+    <img src="Assets/宗翰老師.png" alt="宗翰老師">
+    <div class="poster-photo-fade"></div>
+  </div>
+
+  <!-- Text content -->
+  <div class="poster-text">
+    <!-- Tagline with red lines -->
+    <div class="poster-tagline-row">
+      <span class="poster-red-line"></span>
+      <span class="poster-tagline">科學教育的金牌推手</span>
+      <span class="poster-red-line"></span>
+    </div>
+
+    <!-- Name -->
+    <h1 class="poster-name">宗翰老師</h1>
+
+    <!-- Credentials -->
+    <div class="poster-credentials">
+      <p>獵豹科教創辦人</p>
+      <p>培養訓練數十位奧林匹亞金牌國手</p>
+      <p>MIT 應屆錄取生（全台唯一）的指導老師</p>
+    </div>
+
+    <!-- Bottom accent -->
+    <div class="poster-bottom-line"></div>
+  </div>
+</div>
+
+</body>
+</html>
