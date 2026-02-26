@@ -459,40 +459,11 @@ section {
   letter-spacing: 0.06em;
 }
 
-/* 王金平-style speaker card */
-.hero-speaker-card {
-  display: flex;
-  align-items: center;
-  gap: 1.8rem;
-  background: rgba(20, 20, 20, 0.85);
-  border: 1px solid rgba(185, 28, 28, 0.2);
-  border-radius: var(--radius);
-  padding: 1.5rem 2rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  max-width: 580px;
-  width: 100%;
-}
-
-.speaker-portrait-wrap {
-  width: 110px;
-  height: 140px;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  flex-shrink: 0;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-}
-
-.speaker-portrait-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-}
-
-.speaker-info {
-  flex: 1;
+/* 王金平-style speaker info — clean, no card box */
+.hero-speaker-info {
   text-align: center;
+  width: 100%;
+  max-width: 580px;
 }
 
 /* Tagline with red lines (王金平 style) */
@@ -1239,10 +1210,6 @@ button:focus-visible {
     padding: 5rem 2rem 4rem;
   }
 
-  .hero-speaker-card {
-    padding: 2rem 2.5rem;
-  }
-
   .signup-grid {
     grid-template-columns: 1fr auto;
     gap: 3rem;
@@ -1259,10 +1226,6 @@ button:focus-visible {
 }
 
 @media (min-width: 1024px) {
-  .hero-speaker-card {
-    padding: 2rem 3rem;
-  }
-
   .comparison-card {
     padding: 1.2rem 1.3rem;
   }
@@ -1303,17 +1266,6 @@ button:focus-visible {
 
   .hero-tagline {
     font-size: 0.7rem;
-  }
-
-  .hero-speaker-card {
-    flex-direction: column;
-    padding: 1.2rem;
-    gap: 1rem;
-  }
-
-  .speaker-portrait-wrap {
-    width: 90px;
-    height: 115px;
   }
 
   .speaker-name-big {
