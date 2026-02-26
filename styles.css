@@ -920,15 +920,59 @@ section {
   text-align: center;
 }
 
+/* Leslie portrait + header layout */
+.insider-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.insider-portrait {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(219, 175, 76, 0.3);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  background: var(--bg-card);
+}
+
+.insider-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.insider-header-text {
+  flex: 1;
+}
+
 .insider-block h2 {
-  margin-bottom: 0.3em;
+  margin-bottom: 0.25em;
+  text-align: left;
 }
 
 .insider-subtitle {
   font-family: var(--font-serif);
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-light);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.insider-speaker-name {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.7rem;
+  background: var(--accent-gold-dim);
+  border-radius: 20px;
 }
 
 .insider-body {
@@ -1436,6 +1480,21 @@ button:focus-visible {
 
   .hero-tagline {
     font-size: 0.7rem;
+  }
+
+  .insider-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .insider-portrait {
+    width: 90px;
+    height: 90px;
+  }
+
+  .insider-block h2,
+  .insider-subtitle {
+    text-align: center;
   }
 
   .speaker-name-big {
